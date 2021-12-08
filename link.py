@@ -14,7 +14,7 @@ class Link:
         C = r.uniform(2e8, 3e10) # propagation_speed [m/s]
         propagation_delay = d / float(C) # where d is in [m]
         transmission_delay = 150 / float(R) # where 150Mb = filesize
-        return propagation_delay + transmission_delay
+        return round(propagation_delay + transmission_delay,4)
 
     def calculate_quality(self): # Unit [standard. 1-10]
         return r.randint(1,10)
