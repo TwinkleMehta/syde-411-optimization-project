@@ -7,20 +7,15 @@ class Router:
         self.quality = self.calculate_quality()
 
     def calculate_cost(self): # Unit [cents] 
-        # OR we can just generate range between calculated cents 
-        # return round(r.uniform(0.04, 10.04), 2) # between 1.04 - 10.04 watts
-        # choose wattage between 2 - 20 r
-        wattage = r.randint(1,20) # between 2 - 20 watts
-        # calculate costs
-        return round(wattage*21.64*(24/float(1000)), 2)
-        
-    def calculate_time(self): # Unit [ms] 
-        queue_delay = r.randint(0,10) # TEMP VALUES
-        process_delay = r.randint(0,10) # TEMP VALUES
-        return queue_delay + process_delay
+        return round(r.uniform(1.04, 10.04), 2) 
+
+    def calculate_time(self): # Unit [s] 
+        queue_delay = r.uniform(0.01,0.03)
+        process_delay = r.uniform(7.42e-5,1.9588e-3)
+        return round(queue_delay + process_delay, 4)
 
     def calculate_quality(self): # Unit [standard. 1-10]
-        return r.randint(0,10)
+        return r.randint(1,10)
      
     def get_cost(self):
         return self.cost
